@@ -1,0 +1,5 @@
+# Ignoriraj node_modules jer su to instalirane biblioteke
+node_modules/
+
+# Ignoriraj log datoteke
+*.log
