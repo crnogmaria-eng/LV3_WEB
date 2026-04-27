@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO meta tag: opisuje sadržaj stranice tražilicama i pomaže boljem rangiranju. -->
+  <meta name="description" content="Music Info je web stranica s podacima o pjesmama, izvođačima, žanrovima.">
+  <link rel="stylesheet" href="/style/style.css">
+  <title>Music Info | Početna</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div>
+        <p class="eyebrow">MCMCMC</p>
+        <h1>Music Info</h1>
+        <p class="subtitle">Stranica o popularnim pjesmama, izvođačima i glazbenim žanrovima.</p>
+      </div>
+
+      <div class="menu-wrap">
+        <button class="menu-button" aria-label="Otvori navigaciju">☰ Menu</button>
+        <nav class="dropdown-nav" aria-label="Primarna navigacija">
+          <ul>
+            <li><a href="index.html">Početna</a></li>
+            <li><a href="grafikon.html">Grafikon</a></li>
+            <li><a href="/slike">Galerija</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-layout">
+    <section class="content-card intro-card" aria-labelledby="uvod-naslov">
+      <h2 id="uvod-naslov">Pregled glazbenih podataka</h2>
+      <p>
+        Stranica prikazuje odabrane informacije o poznatim pjesmama: naziv pjesme, izvođača,
+        godinu izdanja, trajanje, tempo i osnovni žanr. 
+      </p>
+      <a class="cta-link" href="grafikon.html">Pogledaj vizualizaciju žanrova</a>
+    </section>
+
+    <div class="wrapper">
+      <section class="content-card table-card" aria-labelledby="tablica-naslov">
+        <div class="section-heading">
+          <h2 id="tablica-naslov">Top pjesme i izvođači</h2>
+          
+        </div>
+            <div id="filteri">
+
+              <!-- TEXT (godina) -->
+              <input type="number" id="filter-godina" placeholder="Godina od">
+
+              <!-- RANGE (tempo) -->
+              <label>Tempo: <span id="tempo-value">120</span></label>
+              <input type="range" id="filter-tempo" min="60" max="200" value="120">
+
+              <!-- RADIO (raspoloženje) -->
+              <div>
+                <label><input type="radio" name="mood" value="" checked> Sve</label>
+                <label><input type="radio" name="mood" value="happy"> Happy</label>
+                <label><input type="radio" name="mood" value="sad"> Sad</label>
+                <label><input type="radio" name="mood" value="energetic"> Energetic</label>
+              </div>
+
+              <button id="filtriraj">Filtriraj</button>
+            </div>
+
+        <div class="table-responsive">
+          <table>
+            <caption>Pregled odabranih pjesama i njihovih glazbenih karakteristika</caption>
+            <thead>
+              <tr>
+                <th scope="col">Track ID</th>
+                <th scope="col">Pjesma</th>
+                <th scope="col">Izvođač</th>
+                <th scope="col">Osnovni žanr</th>
+                <th scope="col">Godina</th>
+                <th scope="col">Trajanje (min)</th>
+                <th scope="col">Tempo</th>
+                
+              </tr>
+            </thead>
+            <!--<tbody>
+              <tr><td>TRIOREW128F424EAF0</td><td>Mr. Brightside</td><td>The Killers</td><td>Alternative rock</td><td>2004</td><td>3.70</td><td>148.1</td><td>0.24</td></tr>
+              <tr><td>TRRIVDJ128F429B0E8</td><td>Wonderwall</td><td>Oasis</td><td>Britpop</td><td>1995</td><td>4.31</td><td>174.4</td><td>0.65</td></tr>
+              <tr><td>TROUVHL128F426C441</td><td>Come as You Are</td><td>Nirvana</td><td>Grunge</td><td>1991</td><td>3.39</td><td>120.0</td><td>0.54</td></tr>
+              <tr><td>TRUEIND128F93038C4</td><td>Take Me Out</td><td>Franz Ferdinand</td><td>Indie rock</td><td>2004</td><td>3.57</td><td>104.0</td><td>0.67</td></tr>
+              <tr><td>TRLNZBD128F935E4D8</td><td>Creep</td><td>Radiohead</td><td>Alternative</td><td>1992</td><td>3.58</td><td>92.4</td><td>0.45</td></tr>
+              <tr><td>TRUMISQ128F9340BEE</td><td>Somebody Told Me</td><td>The Killers</td><td>Indie rock</td><td>2005</td><td>3.29</td><td>138.1</td><td>0.51</td></tr>
+              <tr><td>TRVCCWR128F9304A30</td><td>Viva la Vida</td><td>Coldplay</td><td>Pop rock</td><td>2008</td><td>4.02</td><td>138.0</td><td>0.42</td></tr>
+              <tr><td>TRXOGZT128F424AD74</td><td>Karma Police</td><td>Radiohead</td><td>Alternative rock</td><td>1997</td><td>4.35</td><td>74.6</td><td>0.36</td></tr>
+              <tr><td>TRMZXEW128F9341FD5</td><td>The Scientist</td><td>Coldplay</td><td>Alternative pop</td><td>2002</td><td>5.09</td><td>146.0</td><td>0.21</td></tr>
+              <tr><td>TRIODZU128E078F3E2</td><td>Under the Bridge</td><td>Red Hot Chili Peppers</td><td>Alternative rock</td><td>1991</td><td>4.24</td><td>85.5</td><td>0.51</td></tr>
+            </tbody>-->
+            <tbody id="music-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+        <aside id="playlist">
+          <h2>Moja playlist-a</h2>
+
+          <ul id="lista-playliste">
+            <!-- dinamički -->
+          </ul>
+
+          <button id="potvrdi-playlistu">Potvrdi playlistu</button>
+        </aside>
+
+      <aside class="content-card side-card" aria-labelledby="aside-naslov">
+        <h2 id="aside-naslov">Glazbena fotografija</h2>
+        
+
+        <!-- Responsivna slika: drugačiji izvor za manje ekrane. -->
+        <picture>
+          <source media="(max-width: 768px)" srcset="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=900&q=80">
+          <img
+            src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=1200&q=80"
+            alt="Glazbena pozornica s rasvjetom i publikom tijekom nastupa"
+          >
+        </picture>
+
+        
+      </aside>
+    </div>
+
+    <section class="info-grid" aria-label="Dodatne informacije o glazbi">
+      <article class="content-card info-box">
+        <h2>Ekskluzivno</h2>
+        <p>tralalal.</p>
+      </article>
+
+      <article class="content-card info-box">
+        <h2>Lalalal?</h2>
+        <p>lalalalalalalaa.</p>
+      </article>
+
+      <article class="content-card info-box hover-box">
+        <h2>jos nestot</h2>
+        <p>hfhfhfhfhhf.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025. Music Info · </p>
+  </footer>
+  <script src="scripts.js"></script>
+</body>
+</html>

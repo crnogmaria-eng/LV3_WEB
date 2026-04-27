@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/style_slike.css">
+</head>
+<body>
+
+<h1>Galerija slika</h1>
+
+<section class="galerija-grid">
+  <% images.forEach(image => { %>
+    <figure class="galerija-slika">
+      <a href="#<%= image.id %>">
+        <img src="<%= image.url %>" alt="<%= image.title %>">
+      </a>
+      <figcaption><%= image.title %></figcaption>
+    </figure>
+
+    <!-- Lightbox -->
+    <div id="<%= image.id %>" class="lightbox">
+      <a href="#" class="lightbox-close">X</a>
+      <img src="<%= image.url %>" alt="<%= image.title %>">
+    </div>
+  <% }) %>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+/* Prva promjena: galerija je napravljena kao responsive grid umjesto osnovnog flex prikaza. */
+.galerija-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.galerija-slika {
+  margin: 0;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12);
+}
+
+.galerija-slika img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+  filter: saturate(0.95);
+}
+
+/* Druga promjena: dodan je jači hover zoom i promjena kontrasta. */
+.galerija-slika:hover img {
+  transform: scale(1.08);
+  filter: saturate(1.15) contrast(1.05);
+}
+
+.galerija-slika figcaption {
+  padding: 0.9rem 1rem 1rem;
+  font-weight: 700;
+  color: #172033;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 16, 30, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 100;
+}
+
+.lightbox:target {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: min(1000px, 90vw);
+  max-height: 78vh;
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  text-decoration: none;
+  color: white;
+  background: rgba(255,255,255,0.16);
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .galerija-slika img {
+    height: 200px;
+  }
+
+  .lightbox {
+    padding: 1rem;
+  }
+}

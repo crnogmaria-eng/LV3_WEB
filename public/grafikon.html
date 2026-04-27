@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SEO meta tag: opisuje sadržaj stranice tražilicama i poboljšava pronalazak stranice -->
+  <meta name="description" content="Music Info grafikon prikazuje zastupljenost glazbenih žanrova.">
+  <link rel="stylesheet" href="style\style.css">
+  <title>Music Info | Grafikon</title>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div>
+        <p class="eyebrow">LV1 · HTML i CSS</p>
+        <h1>Music Info</h1>
+        
+      </div>
+
+      <div class="menu-wrap">
+        <div class="menu-button" tabindex="0" aria-label="Izbornik navigacije">☰ Menu</div>
+        <nav class="dropdown-nav" aria-label="Primarna navigacija">
+          <ul>
+            <li><a href="index.html">Početna</a></li>
+            <li><a href="grafikon.html">Grafikon</a></li>
+            <li><a href="slike.html">Galerija</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-layout">
+    <section class="content-card" aria-labelledby="grafikon-uvod">
+      <h2 id="grafikon-uvod">Zastupljenost žanrova</h2>
+      
+    </section>
+
+    <section class="content-card chart-section" aria-labelledby="desktop-chart-title">
+      <h2 id="desktop-chart-title">Histogram žanrova</h2>
+
+      <div class="bar-chart" role="img" aria-label="Histogram žanrova: Alternative rock 3, Indie rock 2, Pop rock 2, Britpop 1, Grunge 1 i Ostalo 1.">
+        <div class="bar-row">
+          <div class="bar-label">Alternative rock (3)</div>
+          <div class="bar-track"><span class="bar fill-a" style="--bar-size: 75%;"></span></div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">Indie rock (2)</div>
+          <div class="bar-track"><span class="bar fill-b" style="--bar-size: 50%;"></span></div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">Pop rock (2)</div>
+          <div class="bar-track"><span class="bar fill-c" style="--bar-size: 50%;"></span></div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">Britpop (1)</div>
+          <div class="bar-track"><span class="bar fill-d" style="--bar-size: 25%;"></span></div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">Grunge (1)</div>
+          <div class="bar-track"><span class="bar fill-e" style="--bar-size: 25%;"></span></div>
+        </div>
+
+        <div class="bar-row">
+          <div class="bar-label">Ostalo (1)</div>
+          <div class="bar-track"><span class="bar fill-f" style="--bar-size: 25%;"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-card mobile-pie-section" aria-labelledby="mobile-chart-title">
+      <h2 id="mobile-chart-title">Pie chart žanrova</h2>
+      <div class="pie-wrap">
+        <div class="pie-chart-mobile" role="img" aria-label="Kružni grafikon: Alternative rock 30 posto, Indie rock 20 posto, Pop rock 20 posto, Britpop 10 posto, Grunge 10 posto i Ostalo 10 posto."></div>
+        <ul class="legend">
+          <li><span class="legend-color color-a"></span>Alternative rock (30%)</li>
+          <li><span class="legend-color color-b"></span>Indie rock (20%)</li>
+          <li><span class="legend-color color-c"></span>Pop rock (20%)</li>
+          <li><span class="legend-color color-d"></span>Britpop (10%)</li>
+          <li><span class="legend-color color-e"></span>Grunge (10%)</li>
+          <li><span class="legend-color color-f"></span>Ostalo (10%)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="info-grid" aria-label="Dodatne informacije o grafikonu">
+      <article class="content-card info-box">
+        <h2>cmij</h2>
+        <p>dgzusg.</p>
+      </article>
+      <article class="content-card info-box">
+        <h2>dhzusg</h2>
+        <p>dgbuzsgdzu.</p>
+      </article>
+      <article class="content-card info-box">
+        <h2>Rdkdj</h2>
+        <p>hdzdz.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025. Music Info · </p>
+  </footer>
+</body>
+</html>
